@@ -184,10 +184,12 @@ function HomePage() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-brand-ink"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
                 >
+                  <WhatsappIcon className="size-4" />
                   Falar com um Especialista <ArrowRight className="size-4" />
                 </a>
+
                 <a
                   href="#projetos"
                   className="inline-flex items-center justify-center rounded-full border border-brand-ink/15 px-7 py-4 text-sm font-semibold text-brand-ink transition-colors hover:border-brand-blue hover:text-brand-blue"
@@ -267,10 +269,12 @@ function HomePage() {
               </p>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {services.map(({ icon: Icon, title, description }) => (
-                <article
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {services.map(({ icon: Icon, title, description }, index) => (
+                <Reveal
+                  as="article"
                   key={title}
+                  delay={index * 100}
                   className="group rounded-2xl border border-border p-8 transition-colors hover:border-brand-blue"
                 >
                   <span className="inline-flex size-12 items-center justify-center rounded-xl bg-brand-blue-soft text-brand-ink transition-colors group-hover:bg-brand-blue group-hover:text-white">
@@ -278,8 +282,9 @@ function HomePage() {
                   </span>
                   <h3 className="mt-6 text-lg font-semibold">{title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
-                </article>
+                </Reveal>
               ))}
+
             </div>
           </div>
         </section>
