@@ -190,9 +190,10 @@ function HomePage() {
                   <dd className="mt-1 text-sm font-semibold text-brand-ink">Conversão</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Base</dt>
-                  <dd className="mt-1 text-sm font-semibold text-brand-ink">Goiânia, GO</dd>
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Social Media</dt>
+                  <dd className="mt-1 text-sm font-semibold text-brand-ink">Conteúdo e Gestão</dd>
                 </div>
+
                 <div>
                   <dt className="text-xs uppercase tracking-widest text-muted-foreground">Canais</dt>
                   <dd className="mt-1 text-sm font-semibold text-brand-ink">Site · Ads · SEO</dd>
