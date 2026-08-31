@@ -22,6 +22,9 @@
   --color-brand-ink: var(--brand-ink);
   --color-brand-blue: var(--brand-blue);
   --color-brand-blue-soft: var(--brand-blue-soft);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-dark: var(--whatsapp-dark);
+
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
