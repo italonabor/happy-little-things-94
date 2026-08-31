@@ -143,12 +143,15 @@ const reviews = [
 
 function HomePage() {
   const [form, setForm] = useState({ nome: "", email: "", whatsapp: "", objetivo: "" });
+  const [activeCase, setActiveCase] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const message = `Olá! Quero um diagnóstico gratuito.%0A%0ANome: ${form.nome}%0AE-mail: ${form.email}%0AWhatsApp: ${form.whatsapp}%0AObjetivo: ${form.objetivo}`;
-    window.open(`${WHATSAPP_URL.split("?")[0]}?text=${message}`, "_blank", "noopener,noreferrer");
+    const subject = `Diagnóstico gratuito - ${form.nome || "novo contato"}`;
+    const body = `Olá! Quero um diagnóstico gratuito.\n\nNome: ${form.nome}\nE-mail: ${form.email}\nWhatsApp: ${form.whatsapp}\nObjetivo: ${form.objetivo}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -343,16 +346,26 @@ function HomePage() {
             </div>
 
             <div className="mt-12 grid gap-8 md:grid-cols-3">
-              {cases.map((item) => (
-                <figure key={item.name} className="flex flex-col">
-                  <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50">
+              {cases.map((item, index) => (
+                <Reveal as="figure" key={item.name} delay={index * 120} className="flex flex-col">
+                  <button
+                    type="button"
+                    onClick={() => setActiveCase(activeCase === item.name ? null : item.name)}
+                    data-scrolling={activeCase === item.name ? "true" : "false"}
+                    aria-label={`Ver o site completo de ${item.name}`}
+                    style={{ ["--case-height" as string]: "20rem" }}
+                    className="case-frame relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-secondary/50 text-left"
+                  >
                     <img
                       src={item.image}
                       alt={`Site desenvolvido pela Criativos Digitais para ${item.name}`}
                       loading="lazy"
-                      className="h-72 w-full object-cover object-top transition-transform duration-500 hover:-translate-y-6 sm:h-80"
+                      className="case-shot block h-auto w-full"
                     />
-                  </div>
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 to-transparent px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-widest text-white">
+                      Ver o site completo
+                    </span>
+                  </button>
                   <figcaption className="mt-5">
                     <h3 className="text-base font-semibold">{item.name}</h3>
                     <p className="mt-1 text-xs uppercase tracking-widest text-brand-blue">
@@ -360,9 +373,10 @@ function HomePage() {
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
                   </figcaption>
-                </figure>
+                </Reveal>
               ))}
             </div>
+
           </div>
         </section>
 
