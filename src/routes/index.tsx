@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   BarChart3,
-  CheckCircle2,
   Gauge,
   Instagram,
   LayoutTemplate,
@@ -17,8 +16,6 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { WhatsappFloat, WhatsappIcon, WHATSAPP_URL } from "@/components/site/WhatsappFloat";
-
-const CONTACT_EMAIL = "italosuzuke@gmail.com";
 
 
 export const Route = createFileRoute("/")({
