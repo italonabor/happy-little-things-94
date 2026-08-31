@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -142,17 +141,6 @@ const reviews = [
 ];
 
 function HomePage() {
-  const [form, setForm] = useState({ nome: "", email: "", whatsapp: "", objetivo: "" });
-  const [activeCase, setActiveCase] = useState<string | null>(null);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const subject = `Diagnóstico gratuito - ${form.nome || "novo contato"}`;
-    const body = `Olá! Quero um diagnóstico gratuito.\n\nNome: ${form.nome}\nE-mail: ${form.email}\nWhatsApp: ${form.whatsapp}\nObjetivo: ${form.objetivo}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
-
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
