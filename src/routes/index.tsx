@@ -431,7 +431,7 @@ function HomePage() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {reviews.map((review) => (
-                <blockquote key={review.client} className="rounded-2xl border border-border p-8">
+                <Reveal as="blockquote" key={review.client} className="rounded-2xl border border-border p-8">
                   <Quote className="size-6 text-brand-blue-soft" />
                   <p className="mt-4 leading-relaxed text-foreground">{review.text}</p>
                   <footer className="mt-6 flex items-center justify-between gap-4 border-t border-border pt-5">
@@ -535,7 +535,7 @@ function HomePage() {
                   Solicitar Diagnóstico Gratuito
                 </button>
                 <p className="text-xs text-muted-foreground">
-                  Ao enviar, você é direcionado ao nosso WhatsApp com os dados preenchidos.
+                  Ao enviar, abrimos seu e-mail com os dados preenchidos para {CONTACT_EMAIL}.
                 </p>
               </form>
             </div>
