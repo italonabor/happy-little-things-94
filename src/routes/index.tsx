@@ -327,7 +327,8 @@ function HomePage() {
                   </span>
                   <h3 className="mt-3 text-base font-semibold text-white">{step.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">{step.description}</p>
-                </li>
+                </Reveal>
+
               ))}
             </ol>
           </div>
