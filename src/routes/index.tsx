@@ -445,7 +445,7 @@ function HomePage() {
                       ))}
                     </div>
                   </footer>
-                </blockquote>
+                </Reveal>
               ))}
             </div>
           </div>
