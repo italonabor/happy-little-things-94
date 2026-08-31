@@ -5,6 +5,7 @@ import {
   BarChart3,
   CheckCircle2,
   Gauge,
+  Instagram,
   LayoutTemplate,
   MousePointerClick,
   Quote,
@@ -15,7 +16,11 @@ import {
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { WhatsappFloat, WHATSAPP_URL } from "@/components/site/WhatsappFloat";
+import { Reveal } from "@/components/site/Reveal";
+import { WhatsappFloat, WhatsappIcon, WHATSAPP_URL } from "@/components/site/WhatsappFloat";
+
+const CONTACT_EMAIL = "italosuzuke@gmail.com";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,7 +71,14 @@ const services = [
     description:
       "Estrutura técnica, conteúdo e sinais locais para que sua empresa apareça nas buscas de forma consistente.",
   },
+  {
+    icon: Instagram,
+    title: "Social Media",
+    description:
+      "Gestão de redes sociais com identidade visual consistente, calendário de conteúdo e posts pensados para gerar contato.",
+  },
 ];
+
 
 const steps = [
   {
