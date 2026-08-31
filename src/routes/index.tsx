@@ -340,13 +340,10 @@ function HomePage() {
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {cases.map((item, index) => (
                 <Reveal as="figure" key={item.name} delay={index * 120} className="flex flex-col">
-                  <button
-                    type="button"
-                    onClick={() => setActiveCase(activeCase === item.name ? null : item.name)}
-                    data-scrolling={activeCase === item.name ? "true" : "false"}
+                  <div
                     aria-label={`Ver o site completo de ${item.name}`}
                     style={{ ["--case-height" as string]: "20rem" }}
-                    className="case-frame relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-secondary/50 text-left"
+                    className="case-frame relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-secondary/50"
                   >
                     <img
                       src={item.image}
@@ -357,7 +354,7 @@ function HomePage() {
                     <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 to-transparent px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-widest text-white">
                       Ver o site completo
                     </span>
-                  </button>
+                  </div>
                   <figcaption className="mt-5">
                     <h3 className="text-base font-semibold">{item.name}</h3>
                     <p className="mt-1 text-xs uppercase tracking-widest text-brand-blue">
