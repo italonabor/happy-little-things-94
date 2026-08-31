@@ -235,7 +235,7 @@ function HomePage() {
         {/* Metodologia */}
         <section id="sobre" className="border-y border-border bg-secondary/60 py-20 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
+            <Reveal>
               <h2 className="text-[clamp(1.7rem,3.4vw,2.5rem)] font-bold leading-tight">
                 Por que a Criativos Digitais é diferente?
               </h2>
@@ -244,17 +244,20 @@ function HomePage() {
                 foca na jornada completa do seu cliente: da pesquisa no Google até o contato com a sua
                 equipe, de forma rápida e persuasiva.
               </p>
-            </div>
+            </Reveal>
             <ul className="grid gap-4 sm:grid-cols-2">
-              {pillars.map(({ icon: Icon, label }) => (
-                <li
+              {pillars.map(({ icon: Icon, label }, index) => (
+                <Reveal
+                  as="li"
                   key={label}
+                  delay={index * 90}
                   className="flex items-start gap-3 rounded-2xl bg-background p-6 shadow-[0_1px_0_0_var(--border)]"
                 >
                   <Icon className="mt-0.5 size-5 shrink-0 text-brand-blue" />
                   <span className="text-sm font-semibold text-brand-ink">{label}</span>
-                </li>
+                </Reveal>
               ))}
+
             </ul>
           </div>
         </section>
@@ -316,8 +319,9 @@ function HomePage() {
             </div>
 
             <ol className="grid gap-5 sm:grid-cols-2">
-              {steps.map((step) => (
-                <li key={step.number} className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+              {steps.map((step, index) => (
+                <Reveal as="li" key={step.number} delay={index * 90} className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+
                   <span className="font-[family-name:var(--font-display)] text-2xl font-bold text-brand-blue">
                     {step.number}
                   </span>
@@ -388,7 +392,7 @@ function HomePage() {
         {/* Autoridade */}
         <section className="border-y border-border bg-secondary/60 py-20 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
+            <Reveal>
               <h2 className="text-[clamp(1.7rem,3.4vw,2.5rem)] font-bold leading-tight">
                 A revolução da captação no seu setor.
               </h2>
@@ -398,17 +402,18 @@ function HomePage() {
                 sites de alta conversão, onde design de alto padrão encontra a estratégia de tráfego
                 certa para não perder nenhuma oportunidade.
               </p>
-            </div>
+            </Reveal>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 { icon: LayoutTemplate, title: "Especialistas em Web Design" },
                 { icon: BarChart3, title: "Especialistas em Tráfego e SEO" },
-              ].map(({ icon: Icon, title }) => (
-                <div key={title} className="rounded-2xl bg-background p-7 shadow-[0_1px_0_0_var(--border)]">
+              ].map(({ icon: Icon, title }, index) => (
+                <Reveal key={title} delay={index * 90} className="rounded-2xl bg-background p-7 shadow-[0_1px_0_0_var(--border)]">
                   <Icon className="size-5 text-brand-blue" />
                   <p className="mt-4 text-sm font-semibold text-brand-ink">{title}</p>
-                </div>
+                </Reveal>
               ))}
+
             </div>
           </div>
         </section>
