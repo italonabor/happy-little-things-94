@@ -150,7 +150,7 @@ function HomePage() {
             aria-hidden
             className="pointer-events-none absolute -right-40 -top-24 size-[34rem] rounded-full bg-brand-blue-soft blur-3xl"
           />
-          <div className="container-site relative grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue-soft px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-ink">
                 Agência de Marketing & Web Design
