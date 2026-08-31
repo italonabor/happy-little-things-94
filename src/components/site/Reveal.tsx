@@ -1,0 +1,52 @@
+import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+
+type RevealProps = {
+  children: ReactNode;
+  as?: ElementType;
+  className?: string;
+  delay?: number;
+  id?: string;
+};
+
+/** Reveals content with a soft fade + rise as it enters the viewport. */
+export function Reveal({ children, as: Tag = "div", className = "", delay = 0, id }: RevealProps) {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <Tag
+      ref={ref}
+      id={id}
+      data-visible={visible ? "true" : "false"}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`reveal ${className}`}
+    >
+      {children}
+    </Tag>
+  );
+}

@@ -5,6 +5,7 @@ import {
   BarChart3,
   CheckCircle2,
   Gauge,
+  Instagram,
   LayoutTemplate,
   MousePointerClick,
   Quote,
@@ -15,7 +16,11 @@ import {
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { WhatsappFloat, WHATSAPP_URL } from "@/components/site/WhatsappFloat";
+import { Reveal } from "@/components/site/Reveal";
+import { WhatsappFloat, WhatsappIcon, WHATSAPP_URL } from "@/components/site/WhatsappFloat";
+
+const CONTACT_EMAIL = "italosuzuke@gmail.com";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,7 +71,14 @@ const services = [
     description:
       "Estrutura técnica, conteúdo e sinais locais para que sua empresa apareça nas buscas de forma consistente.",
   },
+  {
+    icon: Instagram,
+    title: "Social Media",
+    description:
+      "Gestão de redes sociais com identidade visual consistente, calendário de conteúdo e posts pensados para gerar contato.",
+  },
 ];
+
 
 const steps = [
   {
@@ -131,12 +143,15 @@ const reviews = [
 
 function HomePage() {
   const [form, setForm] = useState({ nome: "", email: "", whatsapp: "", objetivo: "" });
+  const [activeCase, setActiveCase] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const message = `Olá! Quero um diagnóstico gratuito.%0A%0ANome: ${form.nome}%0AE-mail: ${form.email}%0AWhatsApp: ${form.whatsapp}%0AObjetivo: ${form.objetivo}`;
-    window.open(`${WHATSAPP_URL.split("?")[0]}?text=${message}`, "_blank", "noopener,noreferrer");
+    const subject = `Diagnóstico gratuito - ${form.nome || "novo contato"}`;
+    const body = `Olá! Quero um diagnóstico gratuito.\n\nNome: ${form.nome}\nE-mail: ${form.email}\nWhatsApp: ${form.whatsapp}\nObjetivo: ${form.objetivo}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -169,10 +184,12 @@ function HomePage() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-brand-ink"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
                 >
+                  <WhatsappIcon className="size-4" />
                   Falar com um Especialista <ArrowRight className="size-4" />
                 </a>
+
                 <a
                   href="#projetos"
                   className="inline-flex items-center justify-center rounded-full border border-brand-ink/15 px-7 py-4 text-sm font-semibold text-brand-ink transition-colors hover:border-brand-blue hover:text-brand-blue"
@@ -218,7 +235,7 @@ function HomePage() {
         {/* Metodologia */}
         <section id="sobre" className="border-y border-border bg-secondary/60 py-20 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <div>
+            <Reveal>
               <h2 className="text-[clamp(1.7rem,3.4vw,2.5rem)] font-bold leading-tight">
                 Por que a Criativos Digitais é diferente?
               </h2>
@@ -227,17 +244,20 @@ function HomePage() {
                 foca na jornada completa do seu cliente: da pesquisa no Google até o contato com a sua
                 equipe, de forma rápida e persuasiva.
               </p>
-            </div>
+            </Reveal>
             <ul className="grid gap-4 sm:grid-cols-2">
-              {pillars.map(({ icon: Icon, label }) => (
-                <li
+              {pillars.map(({ icon: Icon, label }, index) => (
+                <Reveal
+                  as="li"
                   key={label}
+                  delay={index * 90}
                   className="flex items-start gap-3 rounded-2xl bg-background p-6 shadow-[0_1px_0_0_var(--border)]"
                 >
                   <Icon className="mt-0.5 size-5 shrink-0 text-brand-blue" />
                   <span className="text-sm font-semibold text-brand-ink">{label}</span>
-                </li>
+                </Reveal>
               ))}
+
             </ul>
           </div>
         </section>
@@ -252,10 +272,12 @@ function HomePage() {
               </p>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {services.map(({ icon: Icon, title, description }) => (
-                <article
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {services.map(({ icon: Icon, title, description }, index) => (
+                <Reveal
+                  as="article"
                   key={title}
+                  delay={index * 100}
                   className="group rounded-2xl border border-border p-8 transition-colors hover:border-brand-blue"
                 >
                   <span className="inline-flex size-12 items-center justify-center rounded-xl bg-brand-blue-soft text-brand-ink transition-colors group-hover:bg-brand-blue group-hover:text-white">
@@ -263,8 +285,9 @@ function HomePage() {
                   </span>
                   <h3 className="mt-6 text-lg font-semibold">{title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
-                </article>
+                </Reveal>
               ))}
+
             </div>
           </div>
         </section>
@@ -296,14 +319,16 @@ function HomePage() {
             </div>
 
             <ol className="grid gap-5 sm:grid-cols-2">
-              {steps.map((step) => (
-                <li key={step.number} className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+              {steps.map((step, index) => (
+                <Reveal as="li" key={step.number} delay={index * 90} className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+
                   <span className="font-[family-name:var(--font-display)] text-2xl font-bold text-brand-blue">
                     {step.number}
                   </span>
                   <h3 className="mt-3 text-base font-semibold text-white">{step.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">{step.description}</p>
-                </li>
+                </Reveal>
+
               ))}
             </ol>
           </div>
@@ -331,16 +356,26 @@ function HomePage() {
             </div>
 
             <div className="mt-12 grid gap-8 md:grid-cols-3">
-              {cases.map((item) => (
-                <figure key={item.name} className="flex flex-col">
-                  <div className="overflow-hidden rounded-2xl border border-border bg-secondary/50">
+              {cases.map((item, index) => (
+                <Reveal as="figure" key={item.name} delay={index * 120} className="flex flex-col">
+                  <button
+                    type="button"
+                    onClick={() => setActiveCase(activeCase === item.name ? null : item.name)}
+                    data-scrolling={activeCase === item.name ? "true" : "false"}
+                    aria-label={`Ver o site completo de ${item.name}`}
+                    style={{ ["--case-height" as string]: "20rem" }}
+                    className="case-frame relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-secondary/50 text-left"
+                  >
                     <img
                       src={item.image}
                       alt={`Site desenvolvido pela Criativos Digitais para ${item.name}`}
                       loading="lazy"
-                      className="h-72 w-full object-cover object-top transition-transform duration-500 hover:-translate-y-6 sm:h-80"
+                      className="case-shot block h-auto w-full"
                     />
-                  </div>
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 to-transparent px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-widest text-white">
+                      Ver o site completo
+                    </span>
+                  </button>
                   <figcaption className="mt-5">
                     <h3 className="text-base font-semibold">{item.name}</h3>
                     <p className="mt-1 text-xs uppercase tracking-widest text-brand-blue">
@@ -348,16 +383,17 @@ function HomePage() {
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
                   </figcaption>
-                </figure>
+                </Reveal>
               ))}
             </div>
+
           </div>
         </section>
 
         {/* Autoridade */}
         <section className="border-y border-border bg-secondary/60 py-20 md:py-24">
           <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
+            <Reveal>
               <h2 className="text-[clamp(1.7rem,3.4vw,2.5rem)] font-bold leading-tight">
                 A revolução da captação no seu setor.
               </h2>
@@ -367,17 +403,18 @@ function HomePage() {
                 sites de alta conversão, onde design de alto padrão encontra a estratégia de tráfego
                 certa para não perder nenhuma oportunidade.
               </p>
-            </div>
+            </Reveal>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 { icon: LayoutTemplate, title: "Especialistas em Web Design" },
                 { icon: BarChart3, title: "Especialistas em Tráfego e SEO" },
-              ].map(({ icon: Icon, title }) => (
-                <div key={title} className="rounded-2xl bg-background p-7 shadow-[0_1px_0_0_var(--border)]">
+              ].map(({ icon: Icon, title }, index) => (
+                <Reveal key={title} delay={index * 90} className="rounded-2xl bg-background p-7 shadow-[0_1px_0_0_var(--border)]">
                   <Icon className="size-5 text-brand-blue" />
                   <p className="mt-4 text-sm font-semibold text-brand-ink">{title}</p>
-                </div>
+                </Reveal>
               ))}
+
             </div>
           </div>
         </section>
@@ -394,7 +431,7 @@ function HomePage() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {reviews.map((review) => (
-                <blockquote key={review.client} className="rounded-2xl border border-border p-8">
+                <Reveal as="blockquote" key={review.client} className="rounded-2xl border border-border p-8">
                   <Quote className="size-6 text-brand-blue-soft" />
                   <p className="mt-4 leading-relaxed text-foreground">{review.text}</p>
                   <footer className="mt-6 flex items-center justify-between gap-4 border-t border-border pt-5">
@@ -408,7 +445,7 @@ function HomePage() {
                       ))}
                     </div>
                   </footer>
-                </blockquote>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -498,7 +535,7 @@ function HomePage() {
                   Solicitar Diagnóstico Gratuito
                 </button>
                 <p className="text-xs text-muted-foreground">
-                  Ao enviar, você é direcionado ao nosso WhatsApp com os dados preenchidos.
+                  Ao enviar, abrimos seu e-mail com os dados preenchidos para {CONTACT_EMAIL}.
                 </p>
               </form>
             </div>
