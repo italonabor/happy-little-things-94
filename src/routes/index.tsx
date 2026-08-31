@@ -169,11 +169,12 @@ function HomePage() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-7 py-4 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out hover:bg-brand-ink active:scale-[0.97]"
                 >
                   <WhatsappIcon className="size-4" />
                   Falar com um Especialista <ArrowRight className="size-4" />
                 </a>
+
 
                 <a
                   href="#projetos"
@@ -199,15 +200,22 @@ function HomePage() {
               </dl>
             </div>
 
-            <div className="relative">
+            <div className="relative w-full">
               <div className="overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_30px_70px_-40px_rgba(8,30,102,0.45)]">
-                <img
-                  src="/images/hero-logo.webp"
-                  alt="Logo Criativos Digitais"
-                  className="h-[26rem] w-full object-contain md:h-[32rem]"
+                <video
+                  className="aspect-video h-auto w-full object-cover"
+                  src="/videos/hero-ecossistema-digital.mp4"
+                  poster="/images/hero-video-poster.webp"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Animação do ecossistema digital da Criativos Digitais"
                 />
               </div>
             </div>
+
           </div>
         </section>
 

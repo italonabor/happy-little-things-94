@@ -57,7 +57,7 @@ export function Header() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-whatsapp px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-brand-blue px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out hover:bg-brand-ink active:scale-[0.97] sm:inline-flex"
           >
             Falar no WhatsApp
           </a>
@@ -91,7 +91,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="my-4 rounded-full bg-whatsapp px-5 py-3 text-center text-sm font-semibold text-white"
+              className="my-4 rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.97]"
             >
               Falar no WhatsApp
             </a>
