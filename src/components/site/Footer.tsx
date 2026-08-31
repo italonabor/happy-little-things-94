@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 
-const quickLinks = ["Criação de Sites", "SEO e Descoberta", "Tráfego Pago"];
+const quickLinks = ["Criação de Sites", "Tráfego Pago", "SEO e Descoberta", "Social Media"];
 
 export function Footer() {
   return (
@@ -41,9 +41,10 @@ export function Footer() {
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex items-start gap-3">
               <Mail className="mt-0.5 size-4 shrink-0 text-brand-blue" />
-              <a href="mailto:contato@criativosdigitais.com.br" className="hover:text-white">
-                contato@criativosdigitais.com.br
+              <a href="mailto:italosuzuke@gmail.com" className="hover:text-white">
+                italosuzuke@gmail.com
               </a>
+
             </li>
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 size-4 shrink-0 text-brand-blue" />
