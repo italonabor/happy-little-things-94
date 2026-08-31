@@ -150,7 +150,7 @@ function HomePage() {
             aria-hidden
             className="pointer-events-none absolute -right-40 -top-24 size-[34rem] rounded-full bg-brand-blue-soft blur-3xl"
           />
-          <div className="container-site relative grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue-soft px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-ink">
                 Agência de Marketing & Web Design
@@ -190,9 +190,10 @@ function HomePage() {
                   <dd className="mt-1 text-sm font-semibold text-brand-ink">Conversão</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Base</dt>
-                  <dd className="mt-1 text-sm font-semibold text-brand-ink">Goiânia, GO</dd>
+                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Social Media</dt>
+                  <dd className="mt-1 text-sm font-semibold text-brand-ink">Conteúdo e Gestão</dd>
                 </div>
+
                 <div>
                   <dt className="text-xs uppercase tracking-widest text-muted-foreground">Canais</dt>
                   <dd className="mt-1 text-sm font-semibold text-brand-ink">Site · Ads · SEO</dd>
@@ -200,11 +201,11 @@ function HomePage() {
               </dl>
             </div>
 
-            <div className="relative w-full">
+            <div className="relative w-full lg:-mt-10 lg:scale-[1.06] lg:origin-right">
               <div className="overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_30px_70px_-40px_rgba(8,30,102,0.45)]">
                 <video
                   className="aspect-video h-auto w-full object-cover"
-                  src="/videos/hero-ecossistema-digital.mp4"
+                  src="/videos/hero-ecossistema-digital-v2.mp4"
                   poster="/images/hero-video-poster.webp"
                   autoPlay
                   muted
@@ -215,6 +216,7 @@ function HomePage() {
                 />
               </div>
             </div>
+
 
           </div>
         </section>
