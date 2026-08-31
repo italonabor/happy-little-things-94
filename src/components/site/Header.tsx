@@ -6,7 +6,6 @@ const menu = [
   { label: "Nossas Soluções", href: "#solucoes" },
   { label: "Processo", href: "#processo" },
   { label: "Sobre Nós", href: "#sobre" },
-  { label: "Contato", href: "#contato" },
 ];
 
 const WHATSAPP_URL =

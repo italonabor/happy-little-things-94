@@ -430,53 +430,6 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Contato */}
-        <section id="contato" className="pb-24 md:pb-32">
-          <div className="container-site">
-            <div className="grid gap-10 rounded-[1.75rem] bg-brand-ink p-8 text-white md:p-12 lg:grid-cols-2">
-              <div>
-                <h2 className="text-[clamp(1.6rem,3.2vw,2.3rem)] font-bold text-white">
-                  Pronto para ter um site que realmente vende?
-                </h2>
-                <p className="mt-5 leading-relaxed text-white/70">
-                  Fale direto conosco pelo WhatsApp e vamos conversar sobre o próximo passo da sua
-                  empresa na internet.
-                </p>
-                <ul className="mt-8 space-y-3 text-sm text-white/80">
-                  {["Análise do seu site atual", "Diagnóstico de captação", "Plano de próximos passos"].map(
-                    (item) => (
-                      <li key={item} className="flex items-center gap-3">
-                        <CheckCircle2 className="size-4 shrink-0 text-brand-blue" />
-                        {item}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-
-              <div className="flex flex-col items-start justify-center gap-6 rounded-2xl bg-white p-6 md:p-8">
-                <p className="text-foreground">
-                  Clique no botão abaixo e inicie a conversa pelo WhatsApp. Responderemos em breve.
-                </p>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
-                >
-                  <WhatsappIcon className="size-5" />
-                  Falar pelo WhatsApp
-                </a>
-                <p className="text-sm text-muted-foreground">
-                  Ou envie um e-mail para{" "}
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand-blue hover:underline">
-                    {CONTACT_EMAIL}
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
