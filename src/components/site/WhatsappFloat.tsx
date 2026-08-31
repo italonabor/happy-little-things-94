@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 
 export const WHATSAPP_URL =
-  "https://wa.me/5562900000000?text=" +
+  "https://wa.me/5562994847180?text=" +
   encodeURIComponent("Olá! Vi o site da Criativos Digitais e quero falar com um especialista.");
 
 function WhatsappIcon({ className = "" }: { className?: string }) {

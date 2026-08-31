@@ -217,16 +217,10 @@ function HomePage() {
             <div className="relative">
               <div className="overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_30px_70px_-40px_rgba(8,30,102,0.45)]">
                 <img
-                  src="/images/case-cardiologista.png"
-                  alt="Projeto de site institucional desenvolvido pela Criativos Digitais para uma clínica de cardiologia"
-                  className="h-[26rem] w-full object-cover object-top md:h-[32rem]"
+                  src="/images/hero-logo.webp"
+                  alt="Logo Criativos Digitais"
+                  className="h-[26rem] w-full object-contain md:h-[32rem]"
                 />
-              </div>
-              <div className="absolute -bottom-6 left-4 right-4 rounded-2xl bg-brand-ink px-6 py-5 text-white shadow-xl sm:left-8 sm:right-auto sm:max-w-xs">
-                <p className="text-sm font-semibold">Projetos reais no ar</p>
-                <p className="mt-1 text-xs leading-relaxed text-white/70">
-                  Sites de alta conversão para saúde, direito e serviços premium.
-                </p>
               </div>
             </div>
           </div>
@@ -451,17 +445,17 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Formulário */}
+        {/* Contato */}
         <section id="contato" className="pb-24 md:pb-32">
           <div className="container-site">
-            <div className="grid gap-10 rounded-[1.75rem] bg-brand-ink p-8 text-white md:p-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="grid gap-10 rounded-[1.75rem] bg-brand-ink p-8 text-white md:p-12 lg:grid-cols-2">
               <div>
                 <h2 className="text-[clamp(1.6rem,3.2vw,2.3rem)] font-bold text-white">
                   Pronto para ter um site que realmente vende?
                 </h2>
                 <p className="mt-5 leading-relaxed text-white/70">
-                  Deixe seus dados abaixo para conversarmos sobre o próximo passo da sua empresa na
-                  internet.
+                  Fale direto conosco pelo WhatsApp e vamos conversar sobre o próximo passo da sua
+                  empresa na internet.
                 </p>
                 <ul className="mt-8 space-y-3 text-sm text-white/80">
                   {["Análise do seu site atual", "Diagnóstico de captação", "Plano de próximos passos"].map(
@@ -475,69 +469,26 @@ function HomePage() {
                 </ul>
               </div>
 
-              <form onSubmit={handleSubmit} className="grid gap-4 rounded-2xl bg-white p-6 md:p-8">
-                <div className="grid gap-2">
-                  <label htmlFor="nome" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Nome Completo
-                  </label>
-                  <input
-                    id="nome"
-                    required
-                    value={form.nome}
-                    onChange={(e) => setForm({ ...form, nome: e.target.value })}
-                    className="h-12 rounded-xl border border-border px-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                  />
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="grid gap-2">
-                    <label htmlFor="email" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      E-mail
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="h-12 rounded-xl border border-border px-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <label htmlFor="whatsapp" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      WhatsApp
-                    </label>
-                    <input
-                      id="whatsapp"
-                      required
-                      inputMode="tel"
-                      value={form.whatsapp}
-                      onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
-                      className="h-12 rounded-xl border border-border px-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                    />
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <label htmlFor="objetivo" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Qual o seu maior objetivo hoje?
-                  </label>
-                  <textarea
-                    id="objetivo"
-                    rows={4}
-                    value={form.objetivo}
-                    onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
-                    className="rounded-xl border border-border p-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-2 h-13 rounded-full bg-brand-blue px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-brand-ink"
-                >
-                  Solicitar Diagnóstico Gratuito
-                </button>
-                <p className="text-xs text-muted-foreground">
-                  Ao enviar, abrimos seu e-mail com os dados preenchidos para {CONTACT_EMAIL}.
+              <div className="flex flex-col items-start justify-center gap-6 rounded-2xl bg-white p-6 md:p-8">
+                <p className="text-foreground">
+                  Clique no botão abaixo e inicie a conversa pelo WhatsApp. Responderemos em breve.
                 </p>
-              </form>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
+                >
+                  <WhatsappIcon className="size-5" />
+                  Falar pelo WhatsApp
+                </a>
+                <p className="text-sm text-muted-foreground">
+                  Ou envie um e-mail para{" "}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand-blue hover:underline">
+                    {CONTACT_EMAIL}
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </section>
