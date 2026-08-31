@@ -150,7 +150,7 @@ function HomePage() {
             aria-hidden
             className="pointer-events-none absolute -right-40 -top-24 size-[34rem] rounded-full bg-brand-blue-soft blur-3xl"
           />
-          <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
+          <div className="container-site relative grid items-center gap-12 lg:grid-cols-[1fr_1.35fr] lg:gap-10">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue-soft px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-ink">
                 Agência de Marketing & Web Design
@@ -201,7 +201,7 @@ function HomePage() {
               </dl>
             </div>
 
-            <div className="relative w-full lg:-mt-10 lg:scale-[1.06] lg:origin-right">
+            <div className="relative w-full lg:-mt-10 lg:scale-[1.12] lg:origin-right">
               <div className="overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_30px_70px_-40px_rgba(8,30,102,0.45)]">
                 <video
                   className="aspect-video h-auto w-full object-cover"
