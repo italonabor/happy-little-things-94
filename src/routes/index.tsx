@@ -201,11 +201,11 @@ function HomePage() {
               </dl>
             </div>
 
-            <div className="relative w-full">
+            <div className="relative w-full lg:-mt-10 lg:scale-[1.06] lg:origin-right">
               <div className="overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_30px_70px_-40px_rgba(8,30,102,0.45)]">
                 <video
                   className="aspect-video h-auto w-full object-cover"
-                  src="/videos/hero-ecossistema-digital.mp4"
+                  src="/videos/hero-ecossistema-digital-v2.mp4"
                   poster="/images/hero-video-poster.webp"
                   autoPlay
                   muted
@@ -216,6 +216,7 @@ function HomePage() {
                 />
               </div>
             </div>
+
 
           </div>
         </section>
