@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import {
   ArrowRight,
   BarChart3,
-  CheckCircle2,
   Gauge,
   Instagram,
   LayoutTemplate,
@@ -18,8 +16,6 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { WhatsappFloat, WhatsappIcon, WHATSAPP_URL } from "@/components/site/WhatsappFloat";
-
-const CONTACT_EMAIL = "italosuzuke@gmail.com";
 
 
 export const Route = createFileRoute("/")({
@@ -142,17 +138,6 @@ const reviews = [
 ];
 
 function HomePage() {
-  const [form, setForm] = useState({ nome: "", email: "", whatsapp: "", objetivo: "" });
-  const [activeCase, setActiveCase] = useState<string | null>(null);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const subject = `Diagnóstico gratuito - ${form.nome || "novo contato"}`;
-    const body = `Olá! Quero um diagnóstico gratuito.\n\nNome: ${form.nome}\nE-mail: ${form.email}\nWhatsApp: ${form.whatsapp}\nObjetivo: ${form.objetivo}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
-
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -217,16 +202,10 @@ function HomePage() {
             <div className="relative">
               <div className="overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_30px_70px_-40px_rgba(8,30,102,0.45)]">
                 <img
-                  src="/images/case-cardiologista.png"
-                  alt="Projeto de site institucional desenvolvido pela Criativos Digitais para uma clínica de cardiologia"
-                  className="h-[26rem] w-full object-cover object-top md:h-[32rem]"
+                  src="/images/hero-logo.webp"
+                  alt="Logo Criativos Digitais"
+                  className="h-[26rem] w-full object-contain md:h-[32rem]"
                 />
-              </div>
-              <div className="absolute -bottom-6 left-4 right-4 rounded-2xl bg-brand-ink px-6 py-5 text-white shadow-xl sm:left-8 sm:right-auto sm:max-w-xs">
-                <p className="text-sm font-semibold">Projetos reais no ar</p>
-                <p className="mt-1 text-xs leading-relaxed text-white/70">
-                  Sites de alta conversão para saúde, direito e serviços premium.
-                </p>
               </div>
             </div>
           </div>
@@ -358,13 +337,10 @@ function HomePage() {
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {cases.map((item, index) => (
                 <Reveal as="figure" key={item.name} delay={index * 120} className="flex flex-col">
-                  <button
-                    type="button"
-                    onClick={() => setActiveCase(activeCase === item.name ? null : item.name)}
-                    data-scrolling={activeCase === item.name ? "true" : "false"}
+                  <div
                     aria-label={`Ver o site completo de ${item.name}`}
                     style={{ ["--case-height" as string]: "20rem" }}
-                    className="case-frame relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-secondary/50 text-left"
+                    className="case-frame relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-secondary/50"
                   >
                     <img
                       src={item.image}
@@ -375,7 +351,7 @@ function HomePage() {
                     <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-ink/80 to-transparent px-4 py-3 text-[0.7rem] font-semibold uppercase tracking-widest text-white">
                       Ver o site completo
                     </span>
-                  </button>
+                  </div>
                   <figcaption className="mt-5">
                     <h3 className="text-base font-semibold">{item.name}</h3>
                     <p className="mt-1 text-xs uppercase tracking-widest text-brand-blue">
@@ -451,96 +427,6 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Formulário */}
-        <section id="contato" className="pb-24 md:pb-32">
-          <div className="container-site">
-            <div className="grid gap-10 rounded-[1.75rem] bg-brand-ink p-8 text-white md:p-12 lg:grid-cols-[0.9fr_1.1fr]">
-              <div>
-                <h2 className="text-[clamp(1.6rem,3.2vw,2.3rem)] font-bold text-white">
-                  Pronto para ter um site que realmente vende?
-                </h2>
-                <p className="mt-5 leading-relaxed text-white/70">
-                  Deixe seus dados abaixo para conversarmos sobre o próximo passo da sua empresa na
-                  internet.
-                </p>
-                <ul className="mt-8 space-y-3 text-sm text-white/80">
-                  {["Análise do seu site atual", "Diagnóstico de captação", "Plano de próximos passos"].map(
-                    (item) => (
-                      <li key={item} className="flex items-center gap-3">
-                        <CheckCircle2 className="size-4 shrink-0 text-brand-blue" />
-                        {item}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-
-              <form onSubmit={handleSubmit} className="grid gap-4 rounded-2xl bg-white p-6 md:p-8">
-                <div className="grid gap-2">
-                  <label htmlFor="nome" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Nome Completo
-                  </label>
-                  <input
-                    id="nome"
-                    required
-                    value={form.nome}
-                    onChange={(e) => setForm({ ...form, nome: e.target.value })}
-                    className="h-12 rounded-xl border border-border px-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                  />
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="grid gap-2">
-                    <label htmlFor="email" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      E-mail
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="h-12 rounded-xl border border-border px-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <label htmlFor="whatsapp" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      WhatsApp
-                    </label>
-                    <input
-                      id="whatsapp"
-                      required
-                      inputMode="tel"
-                      value={form.whatsapp}
-                      onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
-                      className="h-12 rounded-xl border border-border px-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                    />
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <label htmlFor="objetivo" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Qual o seu maior objetivo hoje?
-                  </label>
-                  <textarea
-                    id="objetivo"
-                    rows={4}
-                    value={form.objetivo}
-                    onChange={(e) => setForm({ ...form, objetivo: e.target.value })}
-                    className="rounded-xl border border-border p-4 text-sm text-foreground outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-2 h-13 rounded-full bg-brand-blue px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-brand-ink"
-                >
-                  Solicitar Diagnóstico Gratuito
-                </button>
-                <p className="text-xs text-muted-foreground">
-                  Ao enviar, abrimos seu e-mail com os dados preenchidos para {CONTACT_EMAIL}.
-                </p>
-              </form>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

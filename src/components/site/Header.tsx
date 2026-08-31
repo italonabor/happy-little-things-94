@@ -6,8 +6,11 @@ const menu = [
   { label: "Nossas Soluções", href: "#solucoes" },
   { label: "Processo", href: "#processo" },
   { label: "Sobre Nós", href: "#sobre" },
-  { label: "Contato", href: "#contato" },
 ];
+
+const WHATSAPP_URL =
+  "https://wa.me/5562994847180?text=" +
+  encodeURIComponent("Olá! Vi o site da Criativos Digitais e quero falar com um especialista.");
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -51,10 +54,12 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <a
-            href="#contato"
-            className="hidden rounded-full bg-brand-blue px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-ink sm:inline-flex"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 rounded-full bg-whatsapp px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark sm:inline-flex"
           >
-            Solicitar diagnóstico
+            Falar no WhatsApp
           </a>
           <button
             type="button"
@@ -82,11 +87,13 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#contato"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="my-4 rounded-full bg-brand-blue px-5 py-3 text-center text-sm font-semibold text-white"
+              className="my-4 rounded-full bg-whatsapp px-5 py-3 text-center text-sm font-semibold text-white"
             >
-              Solicitar diagnóstico
+              Falar no WhatsApp
             </a>
           </nav>
         </div>

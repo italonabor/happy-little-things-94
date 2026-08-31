@@ -48,7 +48,9 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 size-4 shrink-0 text-brand-blue" />
-              <span>+55 (62) 9XXXX-XXXX</span>
+              <a href="https://wa.me/5562994847180" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                +55 (62) 99484-7180
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-brand-blue" />
